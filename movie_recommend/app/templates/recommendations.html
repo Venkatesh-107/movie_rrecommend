@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommendations</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 30px; }
+        img { border-radius: 10px; margin: 10px; }
+        .movie-card { display: inline-block; margin: 20px; width: 200px; }
+        .title { font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Recommendations for "{{ movie }}"</h2>
+    {% if recommendations %}
+        {% for rec in recommendations %}
+        <div class="movie-card">
+            {% if rec.poster %}
+            <img src="{{ rec.poster }}" alt="{{ rec.title }}" height="250"><br>
+            {% else %}
+            <p>No Poster</p>
+            {% endif %}
+            <div class="title">{{ rec.title }}</div>
+            <div><small>{{ rec.genres }}</small></div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No recommendations found.</p>
+    {% endif %}
+    <br><br>
+    <a href="/">🔙 Back to Search</a>
+</body>
+</html>
